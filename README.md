@@ -25,6 +25,7 @@ Ensure you have the following dependencies installed:
 
 ## **Run**
 Run Segmentation.py
+
 Trained Weight is stored in last_model.pth.
 
 
