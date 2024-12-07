@@ -7,6 +7,11 @@ from tqdm import tqdm
 import nibabel as nib
 from monai.losses import DiceCELoss
 from monai.inferers import sliding_window_inference
+from monai.apps import load_from_mmar
+from numpy import random
+from monai.transforms import Compose, LoadImage, EnsureChannelFirst, Orientation
+import csv
+from monai.data import PatchDataset, DataLoader, PatchIter
 from monai.transforms import (
     AsDiscrete,
     EnsureChannelFirstd,
@@ -178,8 +183,7 @@ val_ds =Dataset(
     transform=val_transforms,
 )
 
-from numpy import random
-from monai.data import PatchDataset, DataLoader, PatchIter
+
 
 inds = []
 
@@ -232,7 +236,7 @@ val_loader2=DataLoader(ds_l, batch_size=1, shuffle=False, num_workers=1)
 
 
 root_dir='/data2/HW/'
-from monai.apps import load_from_mmar
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model =UNet(
@@ -380,8 +384,7 @@ model.load_state_dict(torch.load(os.path.join(root_dir, "best_metric_model.pth")
 model.load_state_dict(torch.load(os.path.join(root_dir, "last_model.pth")))
 
 
-from monai.transforms import Compose, LoadImage, EnsureChannelFirst, Orientation
-import csv
+
 output_path = 'test_result3/'
 if not os.path.exists(output_path):
     os.makedirs(output_path)
