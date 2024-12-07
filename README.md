@@ -23,4 +23,8 @@ Ensure you have the following dependencies installed:
 - nibabel (for handling NIfTI files)
 - scikit-learn (for evaluation metrics)
 
+## **Run**
+Run Segmentation.py
+Trained Weight is stored in last_model.pth.
+
 
